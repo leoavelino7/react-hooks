@@ -1,9 +1,15 @@
-import { PostList } from './components/PostList'
+import { Form } from './components/Form'
+import { Input } from './components/Input'
 
 function App() {
   return (
     <div>
-      <PostList />
+      <Form>
+        <Input name="name" />
+        <Input name="email" />
+        <Input name="password" />
+        <button type="submit">Enviar</button>
+      </Form>
     </div>
   );
 }
