@@ -1,21 +1,22 @@
-import { useContext, useEffect, useRef } from "react"
-import FormContext from "../contexts/FormContext"
+import { InputHTMLAttributes, forwardRef } from "react"
 
-type InputProps = {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
+  label: string
 }
 
-export function Input({name}: InputProps) {
-  const inputRef = useRef<HTMLInputElement>(null)
-  const { registerField } = useContext(FormContext)
-
-  useEffect(() => {
-    if(inputRef.current) {
-      registerField(name, inputRef.current)
-    }
-  }, [name, registerField])
-
+const Input: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = ({ name, label, ...rest }, nameInputRef) => {
   return (
-    <input name={name} ref={inputRef} />
+    <div className="input-block">
+      <label htmlFor={name}>{label}</label>
+      <input
+        name={name}
+        type="text"
+        ref={nameInputRef}
+        {...rest}
+      />
+    </div>
   )
 }
+
+export default forwardRef(Input)
