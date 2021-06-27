@@ -13,7 +13,7 @@ export function Input({name}: InputProps) {
     if(inputRef.current) {
       registerField(name, inputRef.current)
     }
-  }, [name, registerField])
+  }, [name])
 
   return (
     <input name={name} ref={inputRef} />
