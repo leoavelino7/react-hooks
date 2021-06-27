@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useCallback } from "react"
 
 import FormContext from '../contexts/FormContext'
 
@@ -12,17 +12,17 @@ type Input = {
 }
 
 export function Form({children}: FormProps) {
-  const [inputs, setInputs] = useState<Input[]>([])
+  const [, setInputs] = useState<Input[]>([])
 
-  function registerField(name: string, ref: HTMLInputElement) {
-    setInputs([
-      ...inputs,
+  const registerField = useCallback((name: string, ref: HTMLInputElement) => {
+    setInputs( oldInputs => [
+      ...oldInputs,
       {
         name,
         ref
       }
     ])
-  }
+  }, [])
 
   return (
     <form>
