@@ -11,6 +11,7 @@ Quando usar:
 # useMemo
 Quando usar:
   1. Evitar re-cálculos complexos
+  2. Resolver problemas de igualdade referêncial
 
 # useCallback
   Quando usar:
